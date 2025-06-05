@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        table{
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        input{
+            margin: 10px auto;
+            padding: 5px;
+        }
+        td{
+            margin: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div style="display: flex;gap: 30%; justify-content: center; margin-bottom: 10px;">
+    <div>
+    <h1>add your transistion</h1>
+
+    <form action="{{url_for('index')}}" method="post">
+        Enter data: <input type="date" name="date" required><br>
+        Enter amount: <input type="number" name="amount" required><br>
+        select type: <select name="type">
+            <option value="income">income</option>
+            <option value="expense">expense</option>
+        </select><br>
+        catagory: <input type="text" name="category"><br>
+        description: <input type="text" name="desc"><br>
+        <input type="submit" value="add">
+    </form>
+    </div>
+    <div>
+        <h1>income: {{income}}</h1>
+    <h1>expense: {{expanse}}</h1>
+    {% if total <=0 %}
+    <h1 style="color:red">total: {{total}}</h1>
+    {%else%}
+    <h1>total: {{total}}</h1>
+    {% endif %}
+    </div>
+    </div><hr><hr>
+    
+    <table>
+        <tr>
+            <th>id</th>
+            <th>date</th>
+            <th>ammount</th>
+            <th>type</th>
+            <th>cetagory</th>
+            <th>description</th>
+        </tr>
+        {% for i in v %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.amount}}</td>
+            {%if i.type == 'income'%}
+            <td style="color: green;">{{i.type}}</td>
+            {%else%}
+            <td style="color:red">{{i.type}}</td>
+            {% endif %}
+            <td>{{i.category}}</td>
+            <td>{{i.description}}</td>
+            <td> <form action="{{url_for('delete', id = i.id)}}" method="post">
+                <button type="submit">delete</button>
+            </form></td>
+            <td> <form action="{{url_for('update', id = i.id)}}" method="GET">
+                <button type="submit">update</button>
+            </form></td>
+           
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

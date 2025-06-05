@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        table{
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>add you transistion</h1>
+
+    <form  method="post">
+        Enter data: <input type="date" name="date" value="{{value.date}}" disabled><br>
+        Enter amount: <input type="number" name="amount" value="{{value.amount}}" required><br>
+        select type: <select name="type" value="{{value.type}}" disabled>
+            <option value="income">income</option>
+            <option value="expense">expense</option>
+        </select><br>
+        catagory: <input type="text" name="category" value="{{value.category}}" ><br>
+        description: <input type="text" name="desc" value="{{value.description}}" ><br>
+        <input type="submit" value="add">
+    </form>
+   
+</body>
+</html>
