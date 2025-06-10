@@ -22,8 +22,8 @@
     </style>
 </head>
 <body>
-    <div style="display: flex;gap: 30%; justify-content: center; margin-bottom: 10px;">
-    <div>
+    <div style="text-align: center;">
+ 
     <h1>add your transistion</h1>
 
     <form action="{{url_for('index')}}" method="post">
@@ -37,8 +37,6 @@
         description: <input type="text" name="desc"><br>
         <input type="submit" value="add">
     </form>
-    </div>
-    <div>
         <h1>income: {{income}}</h1>
     <h1>expense: {{expanse}}</h1>
     {% if total <=0 %}
@@ -46,7 +44,6 @@
     {%else%}
     <h1>total: {{total}}</h1>
     {% endif %}
-    </div>
     </div><hr><hr>
     
     <table>
